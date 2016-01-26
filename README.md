@@ -5,15 +5,14 @@ I am pretty handicaped and I can get myself in situations where I need someone t
 
 ## How does it work?
 
-Alam-Pi waits for me to trigger an alarm with a small infrared control. The infrared control I always have  
-with me when I am at home (within reach of the Alarm-Pis infrared reception).
+ResQ-Pi waits for me to trigger an alarm with a small infrared control. The infrared control I always have with me when I am at home (within reach of the ResQ-Pis infrared reception).
 Using the admin panel available with a browser it is possible to configure the device. When the IR receiver detects an alarm, it sends SMSs or E-Mails to a unlimited number of designated recipients. The web-front-end is available in German and English. A custom electronics manages IR reception.
 
-## What is needed to build an Alarm-Pi?
+## What is needed to build an ResQ-Pi?
 
 I use a Raspberry-Pi B+ or 2 (8GB sdcard) with a wireless usb-stick and a 3D-GSM-Stick. The GSM-Stick should include a prepaid card with sufficient credits to be able to send SMS messages. The infrared receiver and three LEDs are available through a PCB connected to the GPIO-Port.
 
-For the folks who thinks that the setup below is too difficult to manage I will provide an Raspian-Image soon.
+For the folks who thinks that the setup below is too difficult to manage I will provide an Raspbian-Image soon.
 
 ### Techology Stack:
 
@@ -24,11 +23,11 @@ For the folks who thinks that the setup below is too difficult to manage I will 
 - Unicorn as application server
 - Nginx as reverse proxy
 
-### Installation on a vanilla Raspian (Jessie)
+### Installation on a vanilla Raspbian (Jessie)
 
-Most packages used by Alarm-Pi come already installed on a vanilla RasPi Jessie. The others that are needed are mentioned below.
+Most packages used by ResQ-Pi come already installed on a vanilla Raspbian Jessie. The others that are needed are mentioned below.
 
-First you want to setup your Raspi to be connected via ssh (there are lots of instructions how to do that on the internet). Once you have logged-in via ssh (ssh pi@<ip-address> password: **raspberry**) you want to update your Raspian.
+First you want to setup your Raspi to be connected via ssh (there are lots of instructions how to do that on the internet). Once you have logged-in via ssh (ssh pi@<ip-address> password: **raspberry**) you want to update your Raspbian.
 
 ```
 sudo apt-get update
@@ -47,14 +46,14 @@ sudo reboot
 Change your hostname name
 ```
 sudo raspi-config
--> Advanced Options -> Hostname -> alarm-pi ... or choose a name you like.
+-> Advanced Options -> Hostname -> resq-pi ... or choose a name you like.
 ```
 And use all available Sdcard-Memory for our root partition
 ```
 sudo raspi-config
 -> Expand Filesystem
 ```
-From the Raspian repos you need:
+From the Raspbian repos you need:
 ```
 sudo apt-get install sqlite3 libsqlite3-dev ruby-dev python-dev python-pycurl nginx liblircclient-dev gammu python-gammu gammu-smsd lirc
 ```
@@ -70,12 +69,12 @@ The python daemon needs some pip libraries as well:
 sudo pip install docopt setproctitle pycrypto pylirc2
 ```
 
-Now get the Alarm-Pi sources with:
+Now get the ResQ-Pi sources with:
 ```
-git clone https://github.com/oprema/alarm-pi
+git clone https://github.com/oprema/resq-pi
 ```
 Setup Lirc:
-Enabling the IR-Control feature in Raspian is easy. Just open
+Enabling the IR-Control feature in Raspbian is easy. Just open
 ```
 nano /boot/config.txt
 ```
@@ -83,6 +82,8 @@ and uncomment
 ```
 #dtoverlay=lirc-rpi
 ```
+Setup of Lirc depends on which IR remote control you want to use. The configuration is for a Apple IR Remote Control Model A1156. Other remote controls need to be teached in.
+
 Configuration:
 I have prepared a shell script to setup all configurations
 ```
@@ -92,8 +93,8 @@ sudo reboot
 
 Installing an empty sqlite database with:
 ```
-sudo ~/alarm_pi.py --resetdb --verbose
-sudo chmod a+w ~/.alarmpi/alarmpi.db
+sudo ~/resq_pi.py --resetdb --verbose
+sudo chmod a+w ~/.resq-pi/resq-pi.db
 ```
 For the web-front-end do:
 ```
@@ -104,7 +105,7 @@ For a first front-end test execute:
 bundle exec rackup -p4567 --host 0.0.0.0
 ```
 And open a Web-Browser:
-with http://alarm-pi:4567 you should see a yellow start page.
+with http://resq-pi:4567 you should see a yellow start page.
 Login with it's default password: **admin** is now possible.
 
 If the web server is not found use the Raspi IP which you get with:
@@ -129,6 +130,9 @@ sudo dpkg-reconfigure tzdata
 ###Final words
 
 If you think this is cool [drop me a note](mailto:jc@carroll.de). 
-A special thanks goes to the love of my life. Without her daily help Alarm-Pi would not have made it to github.
-BTW: **I would love to do more embedded Linux projects and I am currently searching for new challenges - date: January 2016.**
 
+A special thanks goes to the love of my life.
+Without her daily help ResQ-Pi would not have made it to github.
+
+BTW: **I would love to do more embedded Linux projects and I am currently
+searching for new challenges - date: January 2016.**
