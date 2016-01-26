@@ -23,7 +23,7 @@ For the folks who thinks that the setup below is too difficult to manage I will 
 - Unicorn as application server
 - Nginx as reverse proxy
 
-### Installation on a vanilla Raspbian (Jessie)
+### Installation on a vanilla Raspbian (Jessie/Jessie-Lite)
 
 Most packages used by ResQ-Pi come already installed on a vanilla Raspbian Jessie. The others that are needed are mentioned below.
 
@@ -112,6 +112,12 @@ If the web server is not found use the Raspi IP which you get with:
 ```
 ifconfig
 ```
+
+Schematic:
+
+![Image of the ResQ-Pi Schematic](/images/resq-pi_Schaltplan.jpg)
+
+The available LEDs indicate that an alarm is executed and in process. In it's default configuration you need to press the forward button on the Apple IR control three times to call for help. 
 
 SSL/TLS for nginx:
 ```
