@@ -1,0 +1,6 @@
+en:
+  login_form:
+    headline: "Welcome to Alarm-Pi"
+    descr: "Please sign-in with your password."
+    login: "Login"
+    enter_password: "Enter Password"

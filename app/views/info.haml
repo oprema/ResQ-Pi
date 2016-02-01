@@ -1,0 +1,51 @@
+%h2
+  = I18n.t('info.current_settings')
+
+= partial(:flash)
+%p
+  = I18n.t('info.phone_number') + ':'
+  %strong
+    = @setting.phone_number
+  %br/
+  = I18n.t('info.credits_left') + ':'
+  - if @setting.credit_balance == 'unknown'
+    %strong
+      = I18n.t('info.unknown')
+  - else
+    %strong
+      €
+      = @setting.credit_balance
+      &nbsp;
+    %small
+      (
+      = I18n.l(@setting.credit_updated_at, format: :short)
+      )
+%h3
+  = I18n.t('info.notification_participants')
+%p
+  = I18n.t('info.text_messages') + ':'
+  %strong
+    - if @setting.use_sms?
+      = @sms_list
+    - else
+      = I18n.t('info.not_active')
+  %br/
+  E-Mail:
+  %strong
+    - if @setting.use_email?
+      = @email_list
+    - else
+      = I18n.t('info.not_active')
+
+%h3
+  = I18n.t('info.alarm_log')
+%p
+  - if @alarm_logs.size > 0
+    - @alarm_logs.each do |log|
+      %strong
+        = log.test_alarm? ? "Test Alarm:" : "Alarm:     "
+      = I18n.l(log.created_at, format: :short) + ' - '
+      = log.comment
+      %br/
+  - else
+    = I18n.t('info.no_alarms_yet')

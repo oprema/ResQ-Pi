@@ -1,0 +1,87 @@
+/ Modal
+#myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4#myModalLabel.modal-title
+          %span#add-or-edit
+            = I18n.t('participants.headline_add')
+      .modal-body
+        #modalErrors.hide
+          .alert.alert-danger{role: "alert"}
+            %strong
+              = ['Oh snap!', 'Good God!', 'Oh drag!', 'Dammit!'].sample
+            #errorTexts
+
+        %form.form-horizontal#participant-form
+          %p
+            %input{id: "edit", type: 'hidden', value: "", name: 'id'}
+            .form-group
+              %label.control-label.col-sm-3{for: "username"}
+                = I18n.t('participants.name')
+              .col-sm-4
+                %input.form-control{:id => "username", :name => "username", :type => "text", :value => ""}/
+            .form-group
+              %label.control-label.col-sm-3{for: "phone_number"}
+                = I18n.t('participants.phone_number')
+              .col-sm-4
+                %input.form-control{:id => "phone_number", :name => "phone_number", :type => "text", :value => ""}/
+            .form-group
+              %label.control-label.col-sm-3{for: "email_address"}
+                E-Mail
+              .col-sm-4
+                %input.form-control{:id => "email_address", :name => "email_address", :type => "text", :value => ""}/
+            .form-group
+              %label.control-label.col-sm-3{for: "test_user"}
+                = I18n.t('participants.test_user')
+              .col-sm-1
+                %input.form-control{:id => "test_user", :name => "test_user", :type => "checkbox", :value => "1"}/
+
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"}
+          = I18n.t('participants.close')
+        %button.btn.btn-primary#save-participant{:type => "button"}
+          = I18n.t('participants.save')
+
+%h2
+  = I18n.t('participants.participants')
+
+= partial(:flash)
+
+%p
+  %table.table.table-condensed.table-bordered
+    %thead
+      %tr
+        %th
+          = I18n.t('participants.name')
+        %th
+          = I18n.t('participants.phone_number')
+        %th
+          = I18n.t('participants.email_address')
+        %th
+          = I18n.t('participants.avail_as_test_user')
+        %th
+          = I18n.t('participants.delete')
+    %tbody
+      - Participant.all.each do |p|
+        %tr
+          %td
+            %a.edit-participant{href: "#", id: "#{p.id}"}
+              = p.username
+          %td
+            = p.phone_number.blank? ? "--" : p.phone_number
+          %td
+            = p.email_address.blank? ? "--" : p.email_address
+          %td
+            = (p.test_user != 0) ? I18n.t('participants._yes') : I18n.t('participants._no')
+          %td
+            %form{action: "/#{I18n.locale}/admin/participants/#{p.id}/delete", method: 'post'}
+              %input{type: 'hidden', value: 'delete', name: '_method'}
+              %input{type: 'hidden', value: "#{p.username}", name: 'username'}
+              %button.glyphicon.glyphicon-remove.red{aria: {hidden: true}}
+
+/ Button trigger modal
+%button.btn.btn-primary.btn-lg{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button", :id => "add-participant"}
+  = I18n.t('participants.add_participant')

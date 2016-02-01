@@ -1,0 +1,6 @@
+de:
+  login_form:
+    headline: "Willkommen bei Alarm-Pi"
+    descr: "Bitte melden Sie sich mit Ihrem Passwort an."
+    login: "Anmelden"
+    enter_password: "Passwort eingeben"

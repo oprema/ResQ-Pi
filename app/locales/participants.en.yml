@@ -1,0 +1,16 @@
+en:
+  participants:
+    headline_add: "Create Alarm-Pi Participant"
+    headline_edit: "Edit Alarm-Pi Participant"
+    name: "Name"
+    phone_number: "Phone Number"
+    test_user: "Test User"
+    close: "Close"
+    save: "Save"
+    delete: "Delete"
+    participants: "Participants"
+    email_address: "E-Mail Address"
+    avail_as_test_user: "Available as Test User"
+    add_participant: "Add Participant"
+    _yes: "yes"
+    _no: "no"

@@ -1,0 +1,13 @@
+de:
+  layout:
+    settings: "Einstellungen"
+    participants: "Teilnehmer"
+    notifications: "Benachrichtigungen"
+    change_password: "Passwort ändern"
+    login: "Anmelden"
+    logout: "Abmelden"
+  javascript:
+    characters_left: "Zeichen übrig: "
+    something_went_wrong: "Da ist etwas schief gelaufen. Nochmals probieren?"
+    really_delete: "Soll der Teilnehmer XXXX wirklich gelöscht werden?"
+    clear_log_ok: "Ihre Alarm-Aufzeichnungen wurden gelöscht."

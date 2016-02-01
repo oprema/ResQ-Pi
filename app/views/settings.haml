@@ -1,0 +1,74 @@
+%h2
+  = I18n.t('settings.title')
+
+= partial(:flash)
+
+%form.form-horizontal{:action => i18n_link("/admin/change_settings"), :method => "post"}
+  %p
+    .form-group
+      %label.control-label.col-sm-3{for: "username"}
+        = I18n.t('settings.your_name')
+      .col-sm-3
+        %input.form-control{:name => "username", :type => "text", :value => @setting.username}/
+  %p
+    .form-group
+      %label.control-label.col-sm-3{for: "del_log"}
+        = I18n.t('settings.del_log')
+      .col-sm-3
+        %button.btn.btn-primary#clear_log{type: "button"}
+          = I18n.t('settings.clear_log')
+
+  %h3
+    = I18n.t('settings.sms')
+  %p
+    = I18n.t('settings.sms_descr')
+    .form-group
+      %label.control-label.col-sm-3{for: "use_sms"}
+        = I18n.t('settings.sms_notify')
+      .col-sm-1
+        %input.form-control{:name => "use_sms", :type => "checkbox", :value => "1", :checked => @setting.use_sms?}/
+    .form-group
+      %label.control-label.col-sm-3{for: "phone_number"}
+        = I18n.t('settings.phone_number')
+      .col-sm-3
+        %input.form-control{:name => "phone_number", :type => "text", :value => @setting.phone_number}/
+  %h3
+    E-Mail
+  %p
+    = I18n.t('settings.email_descr')
+    .form-group
+      %label.control-label.col-sm-3{for: "use_email"}
+        = I18n.t('settings.email_notify')
+      .col-sm-1
+        %input.form-control{:name => "use_email", :type => "checkbox", :value => "1", :checked => @setting.use_email?}/
+    .form-group
+      %label.control-label.col-sm-3{for: "email_address"}
+        = I18n.t('settings.email_address')
+      .col-sm-3
+        %input.form-control{:name => "email_address", :type => "text", :value => @setting.email_address}/
+    .form-group
+      %label.control-label.col-sm-3{for: "email_password"}
+        = I18n.t('settings.email_password')
+      .col-sm-3
+        %input.form-control{:name => "email_password", :type => "password", :value => @setting.email_password}/
+    .form-group
+      %label.control-label.col-sm-3{for: "email_login"}
+        = I18n.t('settings.email_username')
+      .col-sm-3
+        %input.form-control{:name => "email_login", :type => "text", :value => @setting.email_login}/
+    .form-group
+      %span
+        %label.control-label.col-sm-3{for: "smtp"}
+          = I18n.t('settings.smtp_server')
+        .col-sm-3
+          %input.form-control{:name => "smtp", :type => "text", :value => @setting.smtp}/
+        %label.control-label.col-sm-1{for: "port"}
+          = I18n.t('settings.smtp_port')
+        .col-sm-2
+          %input.form-control{:name => "port", :type => "text", :value => @setting.port}/
+          = I18n.t('settings.google_port')
+
+  %p
+    %button.btn.btn-primary{:type => "submit"}
+      = I18n.t('settings.change_it')
+

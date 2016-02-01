@@ -1,0 +1,24 @@
+en:
+  errors:
+    wrong_password: "Your password was wrong. Try submitting again."
+    password_too_short: "New password too short (min 6 characters). Please try again."
+    password_confirmation: "Password confirmation wrong. Please try again."
+    your_name_required: "Alarm-Pi needs to know your name."
+    your_phone_number_required: "Your phone number, please."
+    email_address_required: "You need to provide an email address."
+    email_password_required: "Your email password please."
+    username_required: "Your user name for your email account, please."
+    smtp_server_required: "Your SMTP server address is required."
+    smtp_port_required: "Your SMTP port can not be empty."
+    sms_or_email_notification: "SMS or E-Mail notifications must be on."
+    name_required: "A name is required."
+    phone_or_email_required: "A phone number or an email address is required."
+    notification_text: "Alarm-Pi needs a text for email and sms notifications."
+    generic_error: "An error occurred. Please try again."
+  notices:
+    logged_in: "You are signed-in now!"
+    logged_out: "You are logged out now."
+    password_changed: "Your password has been changed."
+    changes_saved: "Your changes have been saved."
+  messages:
+    hello_stranger: "Hello Stranger"

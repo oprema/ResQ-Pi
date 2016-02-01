@@ -1,0 +1,11 @@
+de:
+  info:
+    current_settings: "Aktuelle Einstellungen"
+    phone_number: "Telefonnummer (Sim-Card)"
+    credits_left: "Guthaben"
+    unknown: "unbekannt"
+    notification_participants: "Teilnehmer die Benachrichtigungen erhalten"
+    text_messages: "SMS"
+    not_active: "nicht aktiv"
+    alarm_log: "Alarm Aufzeichnungen"
+    no_alarms_yet: "Noch kein Alarm ausgelöst"

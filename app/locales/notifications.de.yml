@@ -1,0 +1,9 @@
+de:
+  notifications:
+    texts: "Benachrichtigungen"
+    email_notification: "E-Mail Benachrichtigung"
+    sms_notification: "SMS Benachrichtigung"
+    email_descr: "Bitte geben Sie hier Ihren E-Mail-Benachrichtigungstext ein."
+    email_subject: "Betreff"
+    sms_descr: "Hier bitte Ihren SMS-Text eingeben (nicht mehr als 140 Zeichen pro SMS)."
+    save: "Speichern"

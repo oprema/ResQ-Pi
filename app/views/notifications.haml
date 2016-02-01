@@ -1,0 +1,52 @@
+:css
+  form .counter {
+    color: #ccc;
+    font-size: 20px;
+    font-weight: bold;
+    right: 0;
+    top: 0;
+  }
+  form .warning{color:#600;}  
+  form .exceeded{color:#e00;}
+  form .tab-content{padding:0 0 20px 0;}
+
+%h2
+  = I18n.t('notifications.texts')
+
+= partial(:flash)
+
+%div
+  / Nav tabs
+  %ul.nav.nav-tabs{:role => "tablist"}
+    %li.active{:role => "presentation"}
+      %a{"aria-controls" => "home", "data-toggle" => "tab", :href => "#emails", :role => "tab"}
+        = I18n.t('notifications.email_notification')
+    %li{:role => "presentation"}
+      %a{"aria-controls" => "profile", "data-toggle" => "tab", :href => "#sms", :role => "tab"}
+        = I18n.t('notifications.sms_notification')
+
+  / Tab panes
+  %form{:action => i18n_link("/admin/change_notifications"), :method => "post"}
+    .tab-content
+      #emails.tab-pane.active{:role => "tabpanel"}
+        %br
+        .form-group
+          %p
+            = I18n.t('notifications.email_subject')
+          %input.form-control{:name => "email_subject", :type => "text", :value => @setting.email_subject}/
+        .form-group
+          %p
+            = I18n.t('notifications.email_descr')
+          %textarea.form-control{:rows => "3", :id => "email_notification", :name => "email_notification"}
+            = @setting.email_notification
+
+      #sms.tab-pane{:role => "tabpanel"}
+        %br
+        %p
+          = I18n.t('notifications.sms_descr')
+        %div
+          %textarea.form-control{:rows => "3", :id => "sms_notification", :name => "sms_notification"}
+            = @setting.sms_notification
+    %div
+      %button.btn.btn-primary{:type => "submit"}
+        = I18n.t('notifications.save')

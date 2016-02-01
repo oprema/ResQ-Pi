@@ -1,0 +1,24 @@
+de:
+  errors:
+    wrong_password: "Ihr Passwort war falsch. Bitte versuchen Sie es nochmals."
+    password_too_short: "Ihr neues Passwort ist zu kurz (minimum 6 Zeichen). Bitte nochmals versuchen."
+    password_confirmation: "Ihre Passwortbestätigung war falsch. Bitte nochmals versuchen."
+    your_name_required: "Alarm-Pi möchte Ihren Namen wissen."
+    your_phone_number_required: "Ihre Prepaid-Rufnummer, bitte."
+    email_address_required: "You need to provide an email address."
+    email_password_required: "Your email password please."
+    username_required: "Your user name for your email account, please."
+    smtp_server_required: "Ihre SMTP-Server-Adresse wird benötigt."
+    smtp_port_required: "Der SMTP-Port darf nicht leer sein."
+    sms_or_email_notification: "SMS- oder E-Mail-Benachrichtigungen müssen ausgewählt sein."
+    name_required: "Ein Name wird benötigt."
+    phone_or_email_required: "Es wird eine Rufnummer oder eine E-Mail-Adresse benötigt."
+    notification_text: "Bitte einen Benachrichtigungstext für SMS und E-Mail eingeben."
+    generic_error: "Es ist ein Fehler aufgetreten. Versuchen Sie es bitte nochmals."
+  notices:
+    logged_in: "Sie sind nun angemeldet!"
+    logged_out: "Sie sind nun abgemeldet."
+    password_changed: "Ihr Passwort wurde erfolgreich geändert."
+    changes_saved: "Ihre Änderungen wurden gespeichert."
+  messages:
+    hello_stranger: "Hallo Fremder"

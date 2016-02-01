@@ -1,0 +1,11 @@
+- unless flash[:error].blank?
+  .alert.alert-danger{role: "alert"}
+    %strong
+      = ['Oh snap!', 'Good God!', 'Oh drag!', 'Dammit!'].sample
+    = flash[:error]
+
+- unless flash[:notice].blank?
+  .alert.alert-success{role: "alert"}
+    %strong
+      OK!
+    = flash[:notice]

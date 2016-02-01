@@ -1,0 +1,13 @@
+en:
+  layout:
+    settings: "Settings"
+    participants: "Participants"
+    notifications: "Notifications"
+    change_password: "Change Password"
+    login: "Login"
+    logout: "Logout"
+  javascript:
+    characters_left: "Characters left: "
+    something_went_wrong: "Something went wrong. Try again."
+    really_delete: "Do you really want to delete\nXXXX"
+    clear_log_ok: "Your Alarm-Log was cleared."

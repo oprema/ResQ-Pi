@@ -1,0 +1,14 @@
+%h2
+  = I18n.t('login_form.headline')
+%p
+  = I18n.t('login_form.descr')
+
+= partial(:flash)
+
+%form{:action => i18n_link("/login/attempt"), :method => "post"}
+  %p
+    %input{:name => :username, :value => 'admin', :type => 'hidden'}/
+    %input{:autofocus => "", :name => "password", :placeholder => I18n.t("login_form.enter_password"), :type => "password"}/
+  %p
+    %button.btn.btn-primary{:type => "submit"}
+      = I18n.t('login_form.login')

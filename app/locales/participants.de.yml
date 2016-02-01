@@ -1,0 +1,16 @@
+de:
+  participants:
+    headline_add: "Alarm-Pi Teilnehmer hinzufügen"
+    headline_edit: "Alarm-Pi Teilnehmer bearbeiten"
+    name: "Name"
+    phone_number: "Telefonnummer"
+    test_user: "Testteilnehmer"
+    close: "Schließen"
+    save: "Speichern"
+    delete: "Löschen"
+    participants: "Teilnehmer"
+    email_address: "E-Mail Adresse"
+    avail_as_test_user: "Als Testteilnehmer verfügbar"
+    add_participant: "Teilnehmer hinzufügen"
+    _yes: "ja"
+    _no: "nein"

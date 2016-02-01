@@ -1,0 +1,174 @@
+!!!
+%html
+  %head
+    %title ResQ-Pi
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %link{:href => "/vendor/bootstrap/css/bootstrap.min.css", :rel => "stylesheet"}/
+    /[if lt IE 9]
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    :css
+      .container .jumbotron {
+        background-color: #ffc;
+        font-size: 18px;
+      }
+      .green {
+        color: green;
+      }
+      .red {
+        color: red;
+      }
+      @media (max-width: 767px) {
+        li.hide_lang {
+          display: none;
+        }
+      }
+      
+  %body
+    / Static navbar
+    %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "/"}
+            %span.glyphicon.glyphicon-bell{aria: {hidden: true}, style: 'color: red;'}
+            ResQ-Pi
+        .navbar-collapse.collapse
+          - if logged_in?
+            %ul.nav.navbar-nav
+              %li
+                %a{:href => i18n_link("/admin/settings")}
+                  = I18n.t('layout.settings')
+            %ul.nav.navbar-nav
+              %li
+                %a{:href => i18n_link("/admin/participants")}
+                  = I18n.t('layout.participants')
+            %ul.nav.navbar-nav
+              %li
+                %a{:href => i18n_link("/admin/notifications")}
+                  = I18n.t('layout.notifications')
+          %ul.nav.navbar-nav.navbar-right
+            - if I18n.locale == :de
+              %li.hide_lang
+                %img{src: '/images/content_client.gif', style: 'padding-top: 20px;'}/
+            %li.hide_lang
+              %a{href: switch_lang(:de), style: 'padding-left: 4px;'}
+                %img{src: '/images/f0-de.gif', alt: 'German'}/
+            - if I18n.locale == :en
+              %li.hide_lang
+                %img{src: '/images/content_client.gif', style: 'padding-top: 20px;'}/
+            %li.hide_lang
+              %a{href: switch_lang(:en), style: 'padding-left: 4px;'}
+                %img{src: '/images/f0-gb.gif', alt: 'English'}/
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                = username
+                %b.caret
+              %ul.dropdown-menu
+                - if logged_in?
+                  %li
+                    %a{:href => i18n_link("/admin/password")}
+                      = I18n.t('layout.change_password')
+                  %li.divider{role: 'separator'}
+                  %li
+                    %a{:href => "/logout"}
+                      = I18n.t('layout.logout')
+                - else
+                  %li
+                    %a{:href => i18n_link("/login/form")}
+                      = I18n.t('layout.login')
+    .container
+      .jumbotron
+        = yield
+
+    / jQuery (necessary for Bootstrap's JavaScript plugins)
+    %script{:src => "/vendor/jquery-1.11.3.min.js"}
+    %script{:src => "/vendor/charCount.js"}
+
+    / Include all compiled plugins (below), or include individual files as needed
+    %script{:src => "/vendor/bootstrap/js/bootstrap.min.js"}
+    - if logged_in?
+      :javascript
+        $(document).ready(function(){ 
+          $("#sms_notification").charCount({
+            allowed: 140,    
+            warning: 20,
+            counterText: "#{I18n.t('javascript.characters_left')}"
+          });
+        });
+
+      :javascript
+        $(document).ready(function() {
+          $("#save-participant").click(function() {
+            var _type = 'POST';
+            var _url = "/#{I18n.locale}/admin/participants/create";
+
+            var id = $('#edit').val();
+            if (id !== "") {
+              _type = 'PUT';
+              _url = "/#{I18n.locale}/admin/participants/"+id+"/update";
+            }
+
+            $.ajax({
+              url: _url,
+              type: _type,
+              data: $("#participant-form").serialize()
+            }).done(function(r) {
+              if (r) {
+                $('#errorTexts').html(r);
+                $('#modalErrors').removeClass("hide");
+              } else {
+                $('#myModal').modal('toggle');
+                $(location).attr('href', "/#{I18n.locale}/admin/participants");
+              }
+            }).fail(function(x) {
+              // Tell the user something bad happened
+              alert("#{I18n.t('javascript.something_went_wrong')}");
+            });
+          });
+          $(".edit-participant").click(function() {
+            var id = $(this).attr('id');
+            $.getJSON("/#{I18n.locale}/admin/participants/"+id+"/edit.json", function(data) {
+              $('#username').val(data["username"]);
+              $('#email_address').val(data["email_address"]);
+              $('#phone_number').val(data["phone_number"]);
+              $('#test_user').prop("checked", data["test_user"]);
+              $('#add-or-edit').html("#{I18n.t('participants.headline_edit')}");
+              $('#edit').val(id);
+              $('#myModal').modal('toggle');
+            }).fail(function() {
+              alert("#{I18n.t('javascript.something_went_wrong')}");
+            });
+          });
+          $("#add-participant").click(function() {
+            $('#modalErrors').addClass("hide");
+            $('#username').val("");
+            $('#email_address').val("");
+            $('#phone_number').val("");
+            $('#test_user').prop("checked", false);
+            $('#add-or-edit').html("#{I18n.t('participants.headline_add')}");
+          });
+          $("#clear_log").click(function() {
+            $.post("/#{I18n.locale}/admin/clear_log", {}, function(data, status) {
+              if (status == 'success') {
+                alert("#{I18n.t('javascript.clear_log_ok')}");
+              } else {
+                alert("#{I18n.t('javascript.something_went_wrong')}")
+              }
+            });
+          });
+        });
+
+      :javascript
+        $(document).ready(function() {
+          $(".glyphicon-remove").click(function() {
+            var username = $(this).prev('input[name="username"]').val();
+            var str = "#{I18n.t('javascript.really_delete')}";
+            console.log(username);
+            return confirm(str.replace(/XXXX/g, username));
+          });
+        });

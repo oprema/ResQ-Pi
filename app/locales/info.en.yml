@@ -1,0 +1,11 @@
+en:
+  info:
+    current_settings: "Current Settings"
+    phone_number: "Phone Number (Sim Card)"
+    credits_left: "Credits left"
+    unknown: "unknown"
+    notification_participants: "Notification Participants"
+    text_messages: "SMS (Text Messages)"
+    not_active: "not active"
+    alarm_log: "Alarm Log"
+    no_alarms_yet: "No Alarms yet!"

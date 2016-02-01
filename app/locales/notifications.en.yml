@@ -1,0 +1,9 @@
+en:
+  notifications:
+    texts: "Notification Texts"
+    email_notification: "E-Mail Notification"
+    sms_notification: "SMS Notification"
+    email_descr: "Please enter your E-Mail notification text below"
+    email_subject: "Subject"
+    sms_descr: "Define your text message below (max. 140 characters per sms)"
+    save: "Save"
