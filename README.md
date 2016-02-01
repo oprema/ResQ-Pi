@@ -34,6 +34,12 @@ sudo apt-get update
 sudo apt-get-upgrade 
 ```
 
+And use all available Sdcard-Memory for our root partition
+```
+sudo raspi-config
+-> Expand Filesystem
+```
+
 I also recommend to upgrade your firmware to the newest incarnation.
 You want to do this with:
 
@@ -48,20 +54,14 @@ Change your hostname name
 sudo raspi-config
 -> Advanced Options -> Hostname -> resq-pi ... or choose a name you like.
 ```
-And use all available Sdcard-Memory for our root partition
-```
-sudo raspi-config
--> Expand Filesystem
-```
+
 From the Raspbian repos you need:
 ```
-sudo apt-get install sqlite3 libsqlite3-dev ruby-dev python-dev python-pycurl nginx liblircclient-dev gammu python-gammu gammu-smsd lirc
+sudo apt-get install sqlite3 libsqlite3-dev ruby-dev python-dev python-pycurl nginx liblircclient-dev gammu python-gammu gammu-smsd lirc rubygems python-pip git ruby
 ```
 
-Ruby and rubygems are usually already installed, but updating rubygems is necessary.
-Next you need to do:
+Ruby and rubygems are usually already installed, but next you need install:
 ```
-sudo gem update --system
 sudo gem install sinatra bundle unicorn --no-ri --no-rdoc
 ```
 The python daemon needs some pip libraries as well:
@@ -76,7 +76,7 @@ git clone https://github.com/oprema/resq-pi
 Setup Lirc:
 Enabling the IR-Control feature in Raspbian is easy. Just open
 ```
-nano /boot/config.txt
+sudo nano /boot/config.txt
 ```
 and uncomment
 ```
@@ -87,14 +87,14 @@ Setup of Lirc depends on which IR remote control you want to use. The configurat
 Configuration:
 I have prepared a shell script to setup all configurations
 ```
-sudo ~/config/install.sh
+cd ~/config && sudo ./install.sh
 sudo reboot
 ```
 
 Installing an empty sqlite database with:
 ```
 sudo ~/resq_pi.py --resetdb --verbose
-sudo chmod a+w ~/.resq-pi/resq-pi.db
+sudo chmod a+rwx ~/.resq-pi && chmod a+w ~/.resq-pi/resq-pi.db
 ```
 For the web-front-end do:
 ```
