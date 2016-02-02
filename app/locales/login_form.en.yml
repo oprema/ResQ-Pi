@@ -1,6 +1,6 @@
 en:
   login_form:
-    headline: "Welcome to Alarm-Pi"
+    headline: "Welcome to ResQ-Pi"
     descr: "Please sign-in with your password."
     login: "Login"
     enter_password: "Enter Password"

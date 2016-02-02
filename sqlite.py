@@ -90,8 +90,8 @@ class ResqStore:
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
         (salt, access_token, "Admin", 1, "--", 0, 0,
           None, None, None, 25, "unknown", 
-          "This is an Alarm-Pi SMS notification. We need help!",
-          "This is an Alarm-Pi E-Mail notification. We need help!",
+          "This is an ResQ-Pi SMS notification. We need help!",
+          "This is an ResQ-Pi E-Mail notification. We need help!",
           "ATTENTION: We need help",
           now))
     return True

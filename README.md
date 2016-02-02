@@ -8,7 +8,7 @@ I am pretty handicaped and I can get myself in situations where I need someone t
 ResQ-Pi waits for me to trigger an alarm with a small infrared control. The infrared control I always have with me when I am at home (within reach of the ResQ-Pis infrared reception).
 Using the admin panel available with a browser it is possible to configure the device. When the IR receiver detects an alarm, it sends SMSs or E-Mails to a unlimited number of designated recipients. The web-front-end is available in German and English. A custom electronics manages IR reception.
 
-## What is needed to build an ResQ-Pi?
+## What is needed to build a ResQ-Pi?
 
 I use a Raspberry-Pi B+ or 2 (8GB sdcard) with a wireless usb-stick and a 3D-GSM-Stick. The GSM-Stick should include a prepaid card with sufficient credits to be able to send SMS messages. The infrared receiver and three LEDs are available through a PCB connected to the GPIO-Port.
 
@@ -94,7 +94,7 @@ sudo reboot
 Installing an empty sqlite database with:
 ```
 sudo ~/resq_pi.py --resetdb --verbose
-sudo chmod a+rwx ~/.resq-pi && chmod a+w ~/.resq-pi/resq-pi.db
+sudo chmod a+rwx ~/.resq-pi && sudo chmod a+w ~/.resq-pi/resq-pi.db
 ```
 For the web-front-end do:
 ```
