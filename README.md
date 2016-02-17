@@ -5,21 +5,21 @@ I am pretty handicaped and I can get myself in situations where I need someone t
 
 ## How does it work?
 
-ResQ-Pi waits for me to trigger an alarm with a small infrared control. The infrared control I always have with me when I am at home (within reach of the ResQ-Pis infrared reception).
-Using the admin panel available with a browser it is possible to configure the device. When the IR receiver detects an alarm, it sends SMSs or E-Mails to a unlimited number of designated recipients. The web-front-end is available in German and English. A custom electronics manages IR reception.
+ResQ-Pi waits for me to trigger an alarm with a small infrared control, a infrared control I always have with me when I am at home (within reach of the ResQ-Pis infrared reception).
+Using the admin panel provided with this software and accessable with a browser, it is possible to configure the ResQ-Pi. Whenever the IR receiver detects an alarm, it sends one or more SMSs or E-Mails to a unlimited number of designated recipients. The web-front-end is available in German and English. A simple custom electronics (Raspberry Pi [HAT](https://www.raspberrypi.org/blog/introducing-raspberry-pi-hats/)) manages IR reception.
 
 ## What is needed to build a ResQ-Pi?
 
-I use a Raspberry-Pi B+ or 2 (8GB sdcard) with a wireless usb-stick and a 3D-GSM-Stick. The GSM-Stick should include a prepaid card with sufficient credits to be able to send SMS messages. The infrared receiver and three LEDs are available through a PCB connected to the GPIO-Port.
+I use a Raspberry-Pi B+ or 2 (8GB sdcard) with a wireless LAN usb-stick and a 3G-GSM-Stick. The GSM-Stick should include a prepaid card with sufficient credits to be able to send SMS messages. The infrared receiver and three LEDs are available through a PCB connected to the GPIO-Port.
 
 For the folks who thinks that the setup below is too difficult to manage I will provide an Raspbian-Image soon.
 
-### Techology Stack:
+### Technology Stack:
 
-- A Python deamon to handle IR (Lirc) commands
+- A Python daemon to handle IR (Lirc) commands
 - SQLite to store configuration parameters
-- Gammu to handle SMS
-- Ruby and sinatra for the web front end
+- Gammu to handle SMS sending
+- Ruby and Sinatra for the web front end
 - Unicorn as application server
 - Nginx as reverse proxy
 
