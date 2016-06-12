@@ -1,7 +1,7 @@
 # ResQ-Pi
 A SMS and E-Mail notification system for elderly and handicaped people
 
-I am pretty handicaped and I can get myself in situations where I need someone to come over to my flat and help me. This Raspberry Pi project should avoid that those situations get dangeours for me and others. 
+I am pretty handicaped and I can get myself in situations where I need someone to come over to my flat and help me. This Raspberry Pi project should avoid that those situations get dangeours for me and others.
 
 ## How does it work?
 
@@ -117,7 +117,7 @@ Schematic:
 
 ![Image of the ResQ-Pi Schematic](/images/resq-pi_Schaltplan.jpg)
 
-The available LEDs indicate that an alarm is executed and in process. In it's default configuration you need to press the forward button on the Apple IR control three times to call for help. 
+The available LEDs indicate that an alarm is executed and in process. In it's default configuration you need to press the forward button on the Apple IR control three times to call for help.
 
 SSL/TLS for nginx:
 ```
@@ -135,10 +135,10 @@ sudo dpkg-reconfigure tzdata
 
 ###Final words
 
-If you think this is cool [drop me a note](mailto:jc@carroll.de). 
+If you think this is cool [drop me a note](mailto:jc@carroll.de).
 
 A special thanks goes to the love of my life.
 Without her daily help ResQ-Pi would not have made it to github.
 
 BTW: **I would love to do more embedded Linux projects and I am currently
-searching for new challenges - date: January 2016.**
+searching for new challenges - date: June 2016.**
