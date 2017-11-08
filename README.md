@@ -136,9 +136,3 @@ sudo dpkg-reconfigure tzdata
 ###Final words
 
 If you think this is cool [drop me a note](mailto:jc@carroll.de).
-
-A special thanks goes to the love of my life.
-Without her daily help ResQ-Pi would not have made it to github.
-
-BTW: **I would love to do more embedded Linux projects and I am currently
-searching for new challenges - date: June 2016.**
