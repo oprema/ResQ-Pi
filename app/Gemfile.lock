@@ -1,71 +1,69 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (4.2.5.1)
-      activesupport (= 4.2.5.1)
-      builder (~> 3.1)
-    activerecord (4.2.5.1)
-      activemodel (= 4.2.5.1)
-      activesupport (= 4.2.5.1)
-      arel (~> 6.0)
-    activesupport (4.2.5.1)
+    activemodel (5.1.5)
+      activesupport (= 5.1.5)
+    activerecord (5.1.5)
+      activemodel (= 5.1.5)
+      activesupport (= 5.1.5)
+      arel (~> 8.0)
+    activesupport (5.1.5)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
-      json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
-      thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    arel (6.0.3)
-    backports (3.6.7)
-    builder (3.2.2)
-    daemons (1.2.3)
-    eventmachine (1.0.9.1)
-    git-version-bump (0.15.1)
-    haml (4.0.7)
+    arel (8.0.0)
+    backports (3.11.1)
+    concurrent-ruby (1.0.5)
+    daemons (1.2.6)
+    eventmachine (1.2.5)
+    haml (5.0.4)
+      temple (>= 0.8.0)
       tilt
-    i18n (0.7.0)
-    json (1.8.1)
-    kgio (2.10.0)
-    minitest (5.8.4)
-    multi_json (1.11.2)
-    rack (1.6.4)
-    rack-contrib (1.4.0)
-      git-version-bump (~> 0.15)
-      rack (~> 1.4)
-    rack-protection (1.5.3)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
+    json (2.1.0)
+    kgio (2.11.2)
+    minitest (5.11.3)
+    multi_json (1.13.1)
+    mustermann (1.0.2)
+    rack (2.0.4)
+    rack-contrib (2.0.1)
+      rack (~> 2.0)
+    rack-protection (2.0.1)
       rack
-    rack-test (0.6.3)
-      rack (>= 1.0)
-    raindrops (0.15.0)
-    sinatra (1.4.7)
-      rack (~> 1.5)
-      rack-protection (~> 1.4)
-      tilt (>= 1.3, < 3)
-    sinatra-activerecord (2.0.9)
+    raindrops (0.19.0)
+    sinatra (2.0.1)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.1)
+      tilt (~> 2.0)
+    sinatra-activerecord (2.0.13)
       activerecord (>= 3.2)
-      sinatra (~> 1.0)
-    sinatra-contrib (1.4.6)
+      sinatra (>= 1.0)
+    sinatra-contrib (2.0.1)
       backports (>= 2.0)
       multi_json
-      rack-protection
-      rack-test
-      sinatra (~> 1.4.0)
+      mustermann (~> 1.0)
+      rack-protection (= 2.0.1)
+      sinatra (= 2.0.1)
       tilt (>= 1.3, < 3)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
-    sinatra-partial (0.4.0)
-      sinatra
-    sqlite3 (1.3.11)
-    thin (1.6.4)
+    sinatra-partial (1.0.1)
+      sinatra (>= 1.4)
+    sqlite3 (1.3.13)
+    temple (0.8.0)
+    thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
-      rack (~> 1.0)
-    thread_safe (0.3.5)
-    tilt (2.0.2)
-    tzinfo (1.2.2)
+      rack (>= 1, < 3)
+    thread_safe (0.3.6)
+    tilt (2.0.8)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    unicorn (5.0.1)
+    unicorn (5.4.0)
       kgio (~> 2.6)
-      rack
       raindrops (~> 0.7)
 
 PLATFORMS
@@ -73,7 +71,7 @@ PLATFORMS
 
 DEPENDENCIES
   haml
-  json (= 1.8.1)
+  json
   rack-contrib
   sinatra
   sinatra-activerecord
@@ -85,4 +83,4 @@ DEPENDENCIES
   unicorn
 
 BUNDLED WITH
-   1.11.2
+   1.16.1
