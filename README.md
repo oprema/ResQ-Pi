@@ -133,6 +133,3 @@ Last but not least you should set the correct timezone.
 sudo dpkg-reconfigure tzdata
 ```
 
-###Final words
-
-If you think this is cool [drop me a note](mailto:jc@carroll.de).
